@@ -23,9 +23,9 @@ def calcular_nivel_penalizado(inputs):
 
 def categoria(inputs):
     valor = calcular_nivel_penalizado(inputs)
-    if valor < 4:
+    if valor < 5:
         return "baja"
-    elif valor < 7:
+    elif valor < 7.5:
         return "media"
     else:
         return "alta"

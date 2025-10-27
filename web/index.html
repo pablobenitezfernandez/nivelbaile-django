@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nivel de Baile</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        input { width: 50px; margin: 0.5rem; text-align: center; }
+        button { margin-top: 1rem; padding: 0.5rem 1rem; }
+        h2 { margin-top: 1rem; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Calcula tu Nivel de Baile</h1>
+    <p>Ingresa 4 valores entre 0 y 4:</p>
+
+    <input type="number" id="val1" min="0" max="4" value="0">
+    <input type="number" id="val2" min="0" max="4" value="0">
+    <input type="number" id="val3" min="0" max="4" value="0">
+    <input type="number" id="val4" min="0" max="4" value="0">
+    <br>
+    <button onclick="calcular()">Enviar</button>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+        async function calcular() {
+            const inputs = [
+                parseInt(document.getElementById('val1').value),
+                parseInt(document.getElementById('val2').value),
+                parseInt(document.getElementById('val3').value),
+                parseInt(document.getElementById('val4').value)
+            ];
+
+            // Cambia la URL si tu API está en otro dominio
+            const response = await fetch('/api/calcular/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ inputs })
+            });
+
+            if (!response.ok) {
+                document.getElementById('resultado').innerText = 'Error al calcular';
+                return;
+            }
+
+            const data = await response.json();
+            document.getElementById('resultado').innerText =
+                `Nivel continuo: ${data.nivel_continuo.toFixed(2)} | Categoría: ${data.categoria}`;
+        }
+    </script>
+</body>
+</html>

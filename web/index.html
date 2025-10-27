@@ -5,56 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nivel de Baile</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      color: #333;
-      max-width: 500px;
-      margin: 40px auto;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1 { text-align: center; }
-    .input-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 10px 0;
-    }
-    label {
-      flex: 1;
-      text-align: left;
-    }
-    input[type="number"] {
-      flex: 1;
-      width: 80px;
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      text-align: center;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover { background-color: #0056b3; }
-    #resultado {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
+    body { font-family: Arial; max-width: 500px; margin: 40px auto; padding:20px; background:#fafafa; border-radius:12px; }
+    h1 { text-align:center; }
+    .input-row { display:flex; justify-content:space-between; margin:10px 0; }
+    label { flex:1; text-align:left; }
+    input { flex:1; width:80px; padding:6px; border:1px solid #ccc; border-radius:6px; text-align:center; }
+    button { width:100%; padding:10px; margin-top:20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; }
+    button:hover { background:#0056b3; }
+    #resultado { margin-top:20px; text-align:center; font-size:1.2em; font-weight:bold; }
   </style>
 </head>
 <body>
-
   <h1>Calculadora de Nivel de Baile</h1>
 
   <form id="formulario">
@@ -101,10 +62,9 @@
         document.getElementById('resultado').textContent = data.error;
       } else {
         document.getElementById('resultado').textContent =
-          `Nivel: ${data.nivel_continuo} | Categoría: ${data.categoria}`;
+          `Nivel: ${Math.min(10, data.nivel_continuo.toFixed(2))} | Categoría: ${data.categoria}`;
       }
     });
   </script>
-
 </body>
 </html>

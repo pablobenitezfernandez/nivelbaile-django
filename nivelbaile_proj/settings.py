@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9g4g1s+=!4j&u69^gial)9$-z_a!=@8h3ij-yhy%$n6=)20o(a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nivelbaile-api.onrender.com']
 
 
 # Application definition

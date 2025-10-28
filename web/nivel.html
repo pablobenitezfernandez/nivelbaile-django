@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nivel de Baile</title>
+  <style>
+    body { font-family: Arial; max-width: 500px; margin: 40px auto; padding:20px; background:#fafafa; border-radius:12px; }
+    h1 { text-align:center; }
+    .input-row { display:flex; justify-content:space-between; margin:10px 0; }
+    label { flex:1; text-align:left; }
+    input { flex:1; width:80px; padding:6px; border:1px solid #ccc; border-radius:6px; text-align:center; }
+    button { width:100%; padding:10px; margin-top:20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; }
+    button:hover { background:#0056b3; }
+    #resultado { margin-top:20px; text-align:center; font-size:1.2em; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Nivel de Baile</h1>
+
+  <form id="formulario">
+    <div class="input-row">
+      <label>Musical Voz:</label>
+      <input type="number" id="voz" min="0" max="4" step="0.1" value="3">
+    </div>
+    <div class="input-row">
+      <label>Musical Instrumental:</label>
+      <input type="number" id="instrumental" min="0" max="4" step="0.1" value="3">
+    </div>
+    <div class="input-row">
+      <label>Disociaciones:</label>
+      <input type="number" id="disociaciones" min="0" max="4" step="0.1" value="3">
+    </div>
+    <div class="input-row">
+      <label>Básico Completo:</label>
+      <input type="number" id="basico" min="0" max="4" step="0.1" value="3">
+    </div>
+    <button type="submit">Calcular</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const inputs = [
+        parseFloat(document.getElementById('voz').value),
+        parseFloat(document.getElementById('instrumental').value),
+        parseFloat(document.getElementById('disociaciones').value),
+        parseFloat(document.getElementById('basico').value)
+      ];
+
+      const response = await fetch('/api/calcular/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ inputs })
+      });
+
+      const data = await response.json();
+      if (data.error) {
+        document.getElementById('resultado').textContent = data.error;
+      } else {
+        document.getElementById('resultado').textContent =
+          `Nivel: ${Math.min(10, data.nivel_continuo.toFixed(2))} | Categoría: ${data.categoria}`;
+      }
+    });
+  </script>
+</body>
+</html>

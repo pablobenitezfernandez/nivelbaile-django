@@ -1,8 +1,8 @@
-from django.urls import path
-from .views import home
-from api.views import calcular  # tu API
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('', home, name='home'),              # la página principal
-    path('api/calcular/', calcular, name='calcular'),  # tu API
+    path('admin/', admin.site.urls),
+    path('', include('web.urls')),       # Todo lo de la app web
+    path('api/', include('api.urls')),   # Todo lo de la app API
 ]

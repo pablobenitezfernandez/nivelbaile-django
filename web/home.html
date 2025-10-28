@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | Nivel de Baile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    /* Cabecera con imagen */
+    .hero {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    height: 900px;
+    }
+
+    .hero img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center -80px; /* mueve la imagen hacia arriba */
+
+    }
+
+
+    .hero h1 {
+        position: absolute;
+        top: 50%;            /* sube o baja el texto */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 3em;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+
+
+    .about {
+        display: flex;
+        flex-direction: column;  /* cambia a row si quieres lado a lado */
+        align-items: flex-start; /* alineado a la izquierda */
+        justify-content: center; /* centrado vertical */
+        background: linear-gradient(135deg, #e63946, #2369ca); /* rojo fuerte a azul oscuro */
+        padding: 60px 40px; /* espacio interno */
+        color: white;
+    }
+
+    .about-text {
+        margin-bottom: 30px; /* separa el texto inglés del español */
+    }
+
+    .about h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+
+
+
+
+    .content {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .content p {
+      font-size: 1.2em;
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      line-height: 1.5;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+      font-size: 1em;
+    }
+
+    a.button:hover {
+      background-color: #0d47a1;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2em;
+        bottom: 10px;
+      }
+
+      .content p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabecera con imagen y texto -->
+  <div class="hero">
+    <img src="{% static 'img/header.jpeg' %}" alt="Header">
+    <h1>MIGUEL & SUNSIRE</h1>
+  </div>
+
+
+  <!-- Sección sobre ellos -->
+<div class="about">
+    <div class="about-text">
+        <h2>About</h2>
+        <p>Miguel & Sunsire are a dance duo specialized in Bachata and sensual dances. They combine technique, musicality, and passion to create an unforgettable experience.</p>
+    </div>
+    <div class="about-text">
+        <h2>Sobre</h2>
+        <p>Miguel & Sunsire son un dúo de baile especializado en Bachata y sensual. Combinan técnica, musicalidad y pasión para crear una experiencia inolvidable.</p>
+    </div>
+</div>
+
+
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <p>Bienvenido a la Calculadora de Nivel de Baile. Evalúa tu nivel fácilmente introduciendo tus puntuaciones y descubre cómo mejorar tu técnica paso a paso.</p>
+    <a href="{% url 'nivel' %}" class="button">Ir a la Calculadora</a>
+  </div>
+
+
+
+
+
+</body>
+</html>

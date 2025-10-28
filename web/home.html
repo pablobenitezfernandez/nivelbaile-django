@@ -66,40 +66,41 @@
 
 
 
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;       /* permite que las imágenes bajen a la siguiente fila */
-        gap: 20px;             /* espacio entre imágenes */
-        padding: 40px 20px;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
+/* Galería - mobile first */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-    .gallery img {
-        width: 48%;            /* dos imágenes por fila en escritorio */
-        height: 630px;         /* más vertical */
-        object-fit: cover;     /* mantiene proporciones y recorta si es necesario */
-        border-radius: 12px;
-        transition: transform 0.3s ease;
-    }
+.gallery-row {
+    display: flex;
+    flex-direction: column; /* móvil: 1x1 */
+    gap: 20px;
+}
 
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
+.gallery-row img {
+    width: 100%;
+    height: auto; /* altura automática en móvil */
+    object-fit: cover;
+    border-radius: 12px;
+}
 
-    /* Responsive: móvil */
-    @media (max-width: 1000px) {
+/* Desktop: dos imágenes por fila */
+@media (min-width: 601px) {
     .gallery-row {
-        flex-direction: column; /* apila imágenes */
+        flex-direction: row; /* 2x2 */
     }
 
     .gallery-row img {
-        flex: unset;    /* elimina flex aplicado antes */
-        width: 100%;    /* ocupa todo el ancho */
-        height: auto;   /* altura proporcional */
-        max-height: 6500px; /* opcional, para no hacerlas muy grandes */
+        flex: 1 1 0;
+        height: 630px; /* altura fija en desktop */
     }
 }
+
 
 
 

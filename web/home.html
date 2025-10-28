@@ -66,6 +66,48 @@
 
 
 
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* espacio entre filas */
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        }
+
+        .gallery-row {
+        display: flex;
+        gap: 20px; /* espacio entre imágenes de la misma fila */
+        }
+
+        .gallery-row img {
+        flex: 1 1 0;       /* evita que alguna desaparezca */
+        height: 630px;     /* más vertical */
+        object-fit: cover; /* mantiene proporciones y recorta si es necesario */
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+        }
+
+        .gallery-row img:hover {
+        transform: scale(1.05);
+        }
+
+        /* Responsive: móvil */
+        @media (max-width: 600px) {
+        .gallery-row {
+            flex-direction: column;
+        }
+
+        .gallery-row img {
+            height: 300px; /* altura más pequeña en móvil */
+        }
+}
+
+
+
+
+
+
 
     .content {
       text-align: center;
@@ -129,11 +171,25 @@
 
 
 
+    <!-- Sección de Galería -->
+    <div class="gallery">
+    <div class="gallery-row">
+        <img src="{% static 'img/WT1.jpeg' %}" alt="Imagen 1">
+        <img src="{% static 'img/WT2.jpeg' %}" alt="Imagen 2">
+    </div>
+    <div class="gallery-row">
+        <img src="{% static 'img/WT3.jpeg' %}" alt="Imagen 3">
+        <img src="{% static 'img/WT4.jpeg' %}" alt="Imagen 4">
+    </div>
+    </div>
+    
+
   <!-- Contenido principal -->
   <div class="content">
     <p>Bienvenido a la Calculadora de Nivel de Baile. Evalúa tu nivel fácilmente introduciendo tus puntuaciones y descubre cómo mejorar tu técnica paso a paso.</p>
     <a href="{% url 'nivel' %}" class="button">Ir a la Calculadora</a>
   </div>
+
 
 
 

@@ -89,11 +89,17 @@
 
     /* Responsive: móvil */
     @media (max-width: 600px) {
-        .gallery img {
-            width: 100%;       /* apila imágenes una debajo de otra */
-            height: 300px;     /* altura más pequeña en móvil */
+        .gallery-row {
+            flex-direction: column; /* filas apiladas verticalmente */
         }
-    }
+
+        .gallery-row img {
+            width: 100%;     /* cada imagen ocupa todo el ancho */
+            height: auto;    /* mantiene proporción */
+            max-height: 650px; /* opcional, para no ser demasiado alta */
+        }
+}
+
 
 
 

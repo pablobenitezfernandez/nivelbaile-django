@@ -66,38 +66,32 @@
 
 
 
-/* Galería - mobile first */
 .gallery {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;       /* permite que las imágenes bajen a la siguiente fila */
     gap: 20px;
     padding: 40px 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-.gallery-row {
-    display: flex;
-    flex-direction: column; /* móvil: 1x1 */
-    gap: 20px;
-}
-
-.gallery-row img {
-    width: 100%;
-    height: auto; /* altura automática en móvil */
+.gallery img {
+    width: 48%;            /* dos imágenes por fila en escritorio */
+    height: 630px;         /* más vertical */
     object-fit: cover;
     border-radius: 12px;
+    transition: transform 0.3s ease;
 }
 
-/* Desktop: dos imágenes por fila */
-@media (min-width: 601px) {
-    .gallery-row {
-        flex-direction: row; /* 2x2 */
-    }
+.gallery img:hover {
+    transform: scale(1.05);
+}
 
-    .gallery-row img {
-        flex: 1 1 0;
-        height: 630px; /* altura fija en desktop */
+/* Responsive: móvil */
+@media (max-width: 768px) {
+    .gallery img {
+        width: 100%;        /* una imagen por fila */
+        height: auto;       /* altura proporcional */
     }
 }
 
@@ -172,13 +166,17 @@
 
 
 
-    <!-- Sección de Galería -->
 <div class="gallery">
-    <img src="{% static 'img/WT1.jpeg' %}" alt="Imagen 1">
-    <img src="{% static 'img/WT2.jpeg' %}" alt="Imagen 2">
-    <img src="{% static 'img/WT3.jpeg' %}" alt="Imagen 3">
-    <img src="{% static 'img/WT4.jpeg' %}" alt="Imagen 4">
+    <div class="gallery-row">
+        <img src="{% static 'img/WT1.jpeg' %}" alt="Imagen 1">
+        <img src="{% static 'img/WT2.jpeg' %}" alt="Imagen 2">
+    </div>
+    <div class="gallery-row">
+        <img src="{% static 'img/WT3.jpeg' %}" alt="Imagen 3">
+        <img src="{% static 'img/WT4.jpeg' %}" alt="Imagen 4">
+    </div>
 </div>
+
 
 
 

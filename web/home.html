@@ -88,16 +88,17 @@
     }
 
     /* Responsive: móvil */
-    @media (max-width: 600px) {
-        .gallery-row {
-            flex-direction: column; /* filas apiladas verticalmente */
-        }
+    @media (max-width: 1000px) {
+    .gallery-row {
+        flex-direction: column; /* apila imágenes */
+    }
 
-        .gallery-row img {
-            width: 100%;     /* cada imagen ocupa todo el ancho */
-            height: auto;    /* mantiene proporción */
-            max-height: 650px; /* opcional, para no ser demasiado alta */
-        }
+    .gallery-row img {
+        flex: unset;    /* elimina flex aplicado antes */
+        width: 100%;    /* ocupa todo el ancho */
+        height: auto;   /* altura proporcional */
+        max-height: 6500px; /* opcional, para no hacerlas muy grandes */
+    }
 }
 
 

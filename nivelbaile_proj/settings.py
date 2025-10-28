@@ -115,10 +115,21 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+# -------------------------------------------
+# STATIC FILES
+# -------------------------------------------
 
+# URL para referenciar los archivos estáticos
 STATIC_URL = '/static/'
+
+# Carpetas donde Django busca archivos estáticos en desarrollo
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'web', 'static'),  # tu carpeta actual con img, css, js
+]
+
+# Carpeta donde Django recopila todos los archivos estáticos para producción
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 
 # Default primary key field type
